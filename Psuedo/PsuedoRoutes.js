@@ -1,5 +1,21 @@
 var db = require("./models");
 
+// creat user 
+
+db.User.create({
+    name: username,
+    email: useremail,
+    photo: userphoto,
+    sex: usersex,
+    age: userage,
+    description: userdescription,
+    interests: userinterests,
+    findMan: userfindMan,
+    findWoman: userfindWoman
+}).then(() => {
+    console.log("user created");
+});
+
 //find current user's info
 
 db.User.findAll({
