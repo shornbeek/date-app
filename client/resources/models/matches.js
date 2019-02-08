@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Matches = sequelize.define("Post", {
+    var Matches = sequelize.define("Matches", {
         user1Id: {
             type: DataTypes.INTEGER,
             allowNull: false
