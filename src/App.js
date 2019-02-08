@@ -14,7 +14,6 @@ import Nav_C from "./component/Nav_C";
 
 
 
-
 class App extends Component {
   render() {
     return (
