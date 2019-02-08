@@ -6,7 +6,7 @@ CREATE TABLE users (
 	id INTEGER AUTO_INCREMENT NOT NULL,
     name VARCHAR(75) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    photo LONGBLOB NOT NULL,
+    photo VARCHAR(255) NOT NULL,
     age INT(2) NOT NULL,
     sex BOOLEAN NOT NULL, -- male=false female=true
     description TEXT,
