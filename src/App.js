@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Profile_C from "./component/Profile_C";
 // import Nav from "./component/Nav";
 import MatchCard_C from "./component/MatchCard_C";
-import FaceBookBtn_C from "./component/FaceBookBtn_C";
+// import FaceBookBtn_C from "./component/FaceBookBtn_C";
 import Find_C from "./component/Find_C";
 import Home_C from "./component/Home_C";
 import Video_C from "./component/Video_C";
@@ -21,8 +21,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <center> Tinder but better.</center>
-          <Nav_C/>
-          <FaceBookBtn_C/>
+         
+          {/* <center><FaceBookBtn_C/></center> */}
           <Switch>
             <Route exact path="/" component={Home_C} />
             <Route exact path="/Find" component={Find_C} />

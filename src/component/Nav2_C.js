@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // import Nav from "./components/Nav";
 
-class Nav_C extends Component {
+class Nav2_C extends Component {
     render() {
         return (
             <div className="App">
@@ -12,19 +12,19 @@ class Nav_C extends Component {
                         <ul className="nav nav-tabs">
 
                                     <Link
-                                        to="/Profile"
-                                        className={window.location.pathname === "/Profile" ? "nav-link active" : "nav-link"}
+                                        to="/Match"
+                                        className={window.location.pathname === "/Match" ? "nav-link active" : "nav-link"}
                                     >
-                                        Profile
+                                        Match
                                 </Link>
                                 </ul>
                                 <ul className="nav navbar-nav navbar-right">
 
                                    
                                         <Link
-                                            to="/Match"
-                                            className={window.location.pathname === "/Match" ? "nav-link active" : "navbar-right" }>
-                                            Match
+                                            to="/Find"
+                                            className={window.location.pathname === "/Find" ? "nav-link active" : "navbar-right" }>
+                                            Find
                                 </Link>
 
                         </ul>
@@ -36,4 +36,4 @@ class Nav_C extends Component {
     }
 }
 
-export default Nav_C;
+export default Nav2_C;

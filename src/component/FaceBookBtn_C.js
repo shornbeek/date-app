@@ -35,6 +35,8 @@
 
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
+// import Profile_C from "./Profile_C";
+
 
 export default class FaceBookBtn_C extends Component {
   state = {
@@ -64,24 +66,32 @@ export default class FaceBookBtn_C extends Component {
 
     if (this.state.isLoggedIn) {
       fbContent = (
+        // <Profile_C>
         <div
           style={{
             width: "400px",
             margin: "auto",
             background: "#f4f4f4",
-            padding: "20px"
+            padding: "20px",
+            // visibility: "hidden"
           }}
         > 
-          <img src={this.state.picture} alt={this.state.name} />
-          <h2>Welcome {this.state.name}</h2>
+          <img 
+          style={{
+            width: "300px",
+            margin: "auto",
+            padding: "5px",
+            // visibility: "hidden"
+          }} src={this.state.picture} alt={this.state.name} />
+          <h2> {this.state.name}</h2>
           Email: {this.state.email}
         </div>
-  
+      // </Profile_C>
       );
     } else {
       fbContent = (
         <FacebookLogin
-          appId="189486938370592"
+          appId="355803105005829"
           autoLoad={true}
           fields="name,email,picture"
           onClick={this.componentClicked}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-// import Nav_C from "./Nav_C";
+import Nav_C from "./Nav_C";
 import "./styleFind.css";
+// import Nav_C from "./component/Nav_C";
+
+
 
 class Find_C extends Component {
     render() {
@@ -8,7 +11,8 @@ class Find_C extends Component {
            
             <div className="App">
                 <div className="container">
-                {/* <Nav_C/> */}
+                <Nav_C/>
+                
                     <img src="http://reductress.com/wp-content/uploads/2016/10/woman-coffee-820x500.jpg" alt="Smiley face" width="100%" />
 
 
@@ -22,6 +26,7 @@ class Find_C extends Component {
                                 <ul>
                                     <li>
                                         <strong>Name:</strong>
+                                        {/* <Link to="/Find">About</Link> */}
                                     </li>
                                     <li>
                                         <strong>Occupation:</strong>
@@ -32,22 +37,22 @@ class Find_C extends Component {
                                 </ul>
                             </div>
 
-                            <div class="row">
-                                <div class="col-6">
+                            <div className="row">
+                                <div className="col-6">
                                     {/* <button>No</button> */}
-                                    <div class="toggle">
+                                    <div className="toggle">
                                         <input type="checkbox"  />
-                                        <span class="button"></span>
-                                        <span class="label">+</span>
+                                        <span className="button"></span>
+                                        <span className="label">+</span>
                                     </div>
 
                                 </div>
-                                <div class="col-6">
+                                <div className="col-6">
                                     {/* <button>Yes</button> */}
-                                    <div class="toggle">
+                                    <div className="toggle">
                                         <input type="checkbox"  />
-                                        <span class="button"></span>
-                                        <span class="label">–</span>
+                                        <span className="button"></span>
+                                        <span className="label">–</span>
                                     </div>
 
                                 </div>
