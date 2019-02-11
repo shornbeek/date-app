@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import FaceBookBtn_C from "./FaceBookBtn_C";
 // import LoveBtn_C from "./src/component/loveBtn_C";
 import Nav2_C from "./Nav2_C";
-
+import userAPI from "../utils/userApi.js";
 
 import FacebookLogin from "react-facebook-login";
 
@@ -14,8 +14,30 @@ class Profile_C extends Component {
         userID: "",
         name: "",
         email: "",
-        picture: ""
+        picture: "",
+        age: "",
+        description: "",
+        gender: "",
+        looking: ""
       };
+
+      handleInputChangeAge = event => {
+        this.setState({ age: event.target.value});
+      }
+      handleInputChangeDescription = event => {
+        this.setState({ description: event.target.value});
+      }
+      handleInputChangeGender = event => {
+        this.setState({ gender: event.target.value});
+      }
+      handleInputChangeLooking = event => {
+        this.setState({ looking: event.target.value})
+      }
+
+      handleFormSubmit = event => {
+        event.preventDefault();
+        console.log(userAPI.findIfUserExists(3));
+      }
 
       responseFacebook = response => {
         console.log(response);
@@ -90,35 +112,36 @@ class Profile_C extends Component {
                 </div>
                 <div className="card-body">
                     <div className="content">
-                        <ul className="list-style-type none">
-                            <li>
-                                <strong>Name:</strong>
-                            </li>
-                            <li>
-                                <strong>Occupation:</strong>
-                            </li>
-                            <li>
-                                <strong>Location:</strong>
-                            </li>
-                            <li>
-                           <center> <form action="/action_page.php">
-{/* <input type="radio" name="gender" value="male"/> Male
-<input type="radio" name="gender" value="female"/> Female<br/> */}
-<label>
-<input type="radio" name="test" value="small" checked/>
-<img alt="female" src="https://www.freeiconspng.com/uploads/ladies-room-toilet-icon-34.png" height="118px"/>
-</label>
-<label>
-<input type="radio" name="test" value="small" checked/>
-<img alt="male" src="https://www.freeiconspng.com/uploads/symbol-of-man-icon-1.png" height="100px"/>
-</label>
-
-</form></center>
-                            </li>
-                        </ul>
+                    <form>
+                      <div className="form-group">
+                        <label for="exampleFormControlInput1">Age</label>
+                        <input onChange={this.handleInputChangeAge} type="number" class="form-control" id="Age" placeholder="18"/>
+                      </div>
+                      <div className="form-group">
+                        <label for="exampleFormControlSelect1">Gender</label>
+                        <select onChange={this.handleInputChangeGender} className="form-control" id="Gender">
+                          <option value="" selected disabled>Please select</option>
+                          <option>Man</option>
+                          <option>Woman</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label for="exampleFormControlTextarea1">Tell us about yourself</label>
+                        <textarea onChange={this.handleInputChangeDescription} className="form-control" id="Description" rows="3"></textarea>
+                      </div>
+                      <div className="form-group">
+                        <label for="exampleFormControlSelect1">Looking for</label>
+                        <select onChange={this.handleInputChangeLooking} className="form-control" id="LookingFor">
+                        <option value="" selected disabled>Please select</option>
+                          <option>Men</option>
+                          <option>Women</option>
+                        </select>
+                      </div>
+                      <center><button type="submit" id="submit" onClick={this.handleFormSubmit}>Submit</button></center>
+                      </form>
                     </div>
 
-                    <center><button>Connections</button></center>
+                    
 
                 </div>
             </div>
