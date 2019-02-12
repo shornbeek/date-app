@@ -7,8 +7,22 @@ function index(req, res) {
         if (err) throw err;
     });
 }
-
+function ifExists(req,res) {
+    User.count({
+        where: {
+            id: req.params.id
+        }
+    }).then(result => {
+        if(result === 0){
+            res.send(false);
+        }else{
+            res.send(true);
+        }
+    }).catch(err => {
+        if (err) throw err;
+    });
+}
 
 module.exports = {
-    index
+    index, ifExists
 }
