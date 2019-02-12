@@ -7,4 +7,8 @@ router.get("/users/if/:id", db.ifExists);
 
 router.get("/users/genderfind/:id", db.findByGender);
 
+router.post("/users/create", db.createUser);
+
+router.put("/users/:id", db.updateUser);
+
 module.exports = router;

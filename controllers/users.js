@@ -88,6 +88,48 @@ module.exports = {
         }).catch(err => {
             if (err) throw err;
         });
+    },
+
+    createUser(req,res) {
+        console.log(req.body);
+        User.create({
+            name: req.body.name,
+            email: req.body.email,
+            photo: req.body.photo,
+            sex: req.body.sex,
+            age: req.body.age,
+            description: req.body.description,
+            findMan: req.body.findMan,
+            findWoman: req.body.findWoman
+        }).then(result => {
+            console.log(result);
+            res.end();
+        }).catch(err => {
+            if (err) throw err;
+        });
+    },
+
+    updateUser(req,res) {
+        console.log(req.body);
+        User.update({
+            name: req.body.name,
+            email: req.body.email,
+            photo: req.body.photo,
+            sex: req.body.sex,
+            age: req.body.age,
+            description: req.body.description,
+            findMan: req.body.findMan,
+            findWoman: req.body.findWoman
+        },{
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            console.log(result);
+            res.end();
+        }).catch(err => {
+            if (err) throw err;
+        });
     }
 
 
