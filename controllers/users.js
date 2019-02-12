@@ -39,7 +39,7 @@ module.exports = {
             if(result1.findMan && result1.findWoman){
                 User.findAll({
                 }).then(result2 => {
-                    let noSelf = result2.filter(user => user.id !== req.params.id);
+                    let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
                         if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
@@ -56,7 +56,8 @@ module.exports = {
                         sex: false
                     }
                 }).then(result2 => {
-                    let noSelf = result2.filter(user => user.id !== req.params.id);
+                    let noSelf = result2.filter(user => user.id !== result1.id);
+                    console.log(noSelf);
                     let final = [];
                     noSelf.forEach(match => {
                         if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
@@ -73,7 +74,7 @@ module.exports = {
                         sex: true
                     }
                 }).then(result2 => {
-                    let noSelf = result2.filter(user => user.id !== req.params.id);
+                    let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
                         if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
