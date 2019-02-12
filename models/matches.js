@@ -9,19 +9,19 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         user1Waved: {
-            type: DataTypes.Boolean
+            type: DataTypes.BOOLEAN
         },
         user2Waved: {
-            type: DataTypes.Boolean
+            type: DataTypes.BOOLEAN
         },
         user1Active: {
-            type: DataTypes.Boolean
+            type: DataTypes.BOOLEAN
         },
         user2Active: {
-            type: DataTypes.Boolean
+            type: DataTypes.BOOLEAN
         },
         canCall: {
-            type: DataTypes.Boolean
+            type: DataTypes.BOOLEAN
         }
     });
     return Matches;

@@ -1,5 +1,6 @@
-module.exports = (app) =>{
-    app.get("/test", (req,res)=>{
-        res.send("Test complete!");
-    })
-}
+const router = require("express").Router();
+const {index} = require("./../controllers/users");
+
+router.get("/users", index);
+
+module.exports = router;

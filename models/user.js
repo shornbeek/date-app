@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         photo: {
-            type: DataTypes.BLOB('long'),
+            type: DataTypes.STRING,
             allowNull: false
         },
         sex: {
@@ -44,6 +44,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         }
 
+    }, {
+        timestamps: false
     });
     return User;
 }
