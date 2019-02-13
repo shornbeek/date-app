@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Redirect} from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
 import '../style/FaceBookBtn_C.css';
 
@@ -9,7 +10,8 @@ export default class FaceBookBtn_C extends Component {
     userID: "",
     name: "",
     email: "",
-    picture: ""
+    picture: "",
+    redirect: false
   };
 
   responseFacebook = response => {
@@ -25,6 +27,18 @@ export default class FaceBookBtn_C extends Component {
   };
   
   componentClicked = () => console.log("clicked");
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect || this.state.isLoggedIn){
+      return <Redirect to="/Profile" />
+    }
+  };
 
   render() {
     let fbContent;
@@ -49,7 +63,9 @@ export default class FaceBookBtn_C extends Component {
       );
     }
 
-    return <div>{fbContent}</div>;
+    return <div>
+        {this.renderRedirect()}
+        {fbContent}
+        </div>;
   }
 }
-

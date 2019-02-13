@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-// import Nav2_C from "./Nav2_C";
 import Nav3_C from "./Nav3_C";
 
 

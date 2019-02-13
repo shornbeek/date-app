@@ -9,7 +9,7 @@ const Match = ({ match, onDislike }) =>
     <button onClick={() => onDislike(match.id)}>Deslike</button>
   </div>
 
-class MatchList extends React.Component {
+class Unmatch extends React.Component {
   constructor(props) {
     super(props)
 
@@ -50,4 +50,4 @@ class MatchList extends React.Component {
 }
 
 
-export default MatchList;
+export default Unmatch;
