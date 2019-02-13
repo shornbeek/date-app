@@ -63,20 +63,20 @@ class Profile_C extends Component {
               style={{
                 width: "400px",
                 margin: "auto",
-                background: "#f4f4f4",
+                // background: "#f4f4f4",
                 padding: "20px",
                 // visibility: "hidden"
               }}
             > 
               <img 
               style={{
-                width: "300px",
+                width: "200px",
                 margin: "auto",
                 padding: "5px",
                 // visibility: "hidden"
               }} src={this.state.picture} alt={this.state.name} />
               <h2> {this.state.name}</h2>
-              Email: {this.state.email}
+              {/* Email: {this.state.email} */}
             </div>
           // </Profile_C>
           );
@@ -94,7 +94,7 @@ class Profile_C extends Component {
     
         return <div>
         <Nav2_C/>
-        {fbContent}            
+        <center>{fbContent}</center>        
         <div className="App">
         <div className="container">
         {/* <FaceBookBtn_C/> */}
