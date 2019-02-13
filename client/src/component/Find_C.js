@@ -35,13 +35,13 @@ class Find_C extends Component {
                                 <div className="col-6">
                                     {/* <button>No</button> */}
                                     <div id='thumbs-down' >
-                                        <i onclick="myFunction(this)" class="fa fa-thumbs-down"></i>
+                                        <i onclick="myFunction(this)" className="fa fa-thumbs-down"></i>
                                     </div>
                                 </div>
                                 <div className="col-6">
                                     {/* <button>Yes</button> */}
                                     <div id='heart'>
-                                        <input type="checkbox"/>
+                                    <i onclick="myFunction(this)"></i>
                                     </div>
                                 </div>
                             </div>

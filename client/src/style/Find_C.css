@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:700);
 @import url(//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css);
 html, body {
-  font-family: "Lato", sans-serif; 
   height: 100%;
 }
 
@@ -14,7 +13,6 @@ html, body {
   cursor: pointer;
   user-select: none;
 }
-
 
 #heart {
   position: relative;
