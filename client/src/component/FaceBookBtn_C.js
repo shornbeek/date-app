@@ -34,6 +34,7 @@
 // export default FaceBookBtn_C;
 
 import React, { Component } from "react";
+import {Redirect} from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
 // import Profile_C from "./Profile_C";
 
@@ -44,7 +45,8 @@ export default class FaceBookBtn_C extends Component {
     userID: "",
     name: "",
     email: "",
-    picture: ""
+    picture: "",
+    redirect: false
   };
 
   responseFacebook = response => {
@@ -61,9 +63,20 @@ export default class FaceBookBtn_C extends Component {
   
   componentClicked = () => console.log("clicked");
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect || this.state.isLoggedIn){
+      return <Redirect to="/Profile" />
+    }
+  };
+
   render() {
     let fbContent;
-
     if (this.state.isLoggedIn) {
       fbContent = (
         // <Profile_C>
@@ -94,13 +107,16 @@ export default class FaceBookBtn_C extends Component {
           appId="355803105005829"
           autoLoad={true}
           fields="name,email,picture"
-          onClick={this.componentClicked}
+          onClick={this.setRedirect}
           callback={this.responseFacebook}
         />
       );
     }
 
-    return <div>{fbContent}</div>;
+    return <div>
+        {this.renderRedirect()}
+        {fbContent}
+        </div>;
   }
 }
 
