@@ -85,13 +85,15 @@ module.exports = {
             Likes.destroy({
                 force:true,
                 where: {
-                    $or: [{userId: req.body.user1Id, Likes: req.body.user2Id}, {userId: req.body.user1Id, Likes: req.body.user2Id}]
+                    $or: [{userId: req.body.user1Id, liked: req.body.user2Id}, {userId: req.body.user1Id, liked: req.body.user2Id}]
                 }
             }).then(() => {
                 console.log(`Removed match and parent likes for users ${req.body.user1Id} and ${req.body.user2Id}`);
+                res.end();
             }).catch(err => {
                 if (err) throw err;
             })
+            res.end();
         }).catch(err=> {
             if (err) throw err;
         });
