@@ -107,7 +107,8 @@ class Profile_C extends Component {
             <div className="card mb-4">
            
                 <div className="card-header">
-                <center> <button>Find Love</button></center>
+                {/* <center> <button>Find Love</button></center> */}
+                <center><h4>Please tell us a little more about yourself</h4></center>
 
                 </div>
                 <div className="card-body">
