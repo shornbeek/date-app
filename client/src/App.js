@@ -11,18 +11,11 @@ import Video_C from "./component/Video_C";
 import Nav_C from "./component/Nav_C";
 
 
-
-
-
-
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <center> Tinder but better.</center>
-         
-          {/* <center><FaceBookBtn_C/></center> */}
           <Switch>
             <Route exact path="/" component={Home_C} />
             <Route exact path="/Find" component={Find_C} />

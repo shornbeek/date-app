@@ -1,0 +1,15 @@
+
+
+#FBpicture {
+    font-size: 100px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+}
+
+#FBlogIn {
+    width: 300px;
+    margin: auto;
+    background: #f4f4f4;
+    padding: 10px;
+}
