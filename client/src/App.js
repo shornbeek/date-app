@@ -24,7 +24,7 @@ class App extends Component {
          
           {/* <center><FaceBookBtn_C/></center> */}
           <Switch>
-            <Route exact path="/" component={Home_C} />
+            <Route exact path="/" component={Profile_C} />
             <Route exact path="/Find" component={Find_C} />
             <Route exact path="/Match" component={MatchCard_C}/>
             <Route exact path="/Profile" component={Profile_C} />

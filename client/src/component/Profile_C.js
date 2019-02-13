@@ -137,7 +137,10 @@ class Profile_C extends Component {
                           <option>Women</option>
                         </select>
                       </div>
-                      <center><button type="submit" id="submit" onClick={this.handleFormSubmit}>Submit</button></center>
+                      <center>{this.state.isLoggedIn ? 
+                        <button type="submit" id="submit" onClick={this.handleFormSubmit}>Submit</button>
+                       : null}
+                       </center>
                       </form>
                     </div>
 
