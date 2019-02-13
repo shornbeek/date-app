@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Nav_C from "./Nav_C";
 import "../style/Find_C.css";
 import Profile_C from './Profile_C';
+import LoveBtn_C from './loveBtn_C';
+import DislikeBtn_C from './DislikeBtn_C';
 
 
 
@@ -16,12 +18,12 @@ class Find_C extends Component {
                         <div className="card-header">
                         </div>
                         <div className="card-body">
-                            <div className="content">
+                            {/* <div className="content">
                                 <ul>
                                     <li>
-                                        <strong>name</strong>
+                                        <strong>name</strong> */}
                                         {/* <Link to="/Find">About</Link> */}
-                                    </li>
+                                    {/* </li>
                                     <li>
                                         <strong>Occupation:</strong>
                                     </li>
@@ -29,19 +31,20 @@ class Find_C extends Component {
                                         <strong>Location:</strong>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> */}
 
                             <div className="row">
                                 <div className="col-6">
                                     {/* <button>No</button> */}
                                     <div id='thumbs-down' >
                                         <i onclick="myFunction(this)" className="fa fa-thumbs-down"></i>
+                                        <DislikeBtn_C />
                                     </div>
                                 </div>
                                 <div className="col-6">
                                     {/* <button>Yes</button> */}
                                     <div id='heart'>
-                                    <i onclick="myFunction(this)"></i>
+                                    <LoveBtn_C />
                                     </div>
                                 </div>
                             </div>

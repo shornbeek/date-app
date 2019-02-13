@@ -108,13 +108,13 @@ class Profile_C extends Component {
                       <option>Women</option>
                     </select>
                   </div>
-                  <center><button type="submit" id="submit" onClick={this.handleFormSubmit}>Find Love</button></center>
+                  <button type="submit" id="submit" onClick={this.handleFormSubmit} style={{cursor:'pointer'}}>Find Love</button>
+                  <button type='logout' id='logout' href='/'style={{float:'right', cursor:'pointer'}}>Log Out</button>
                 </form>
               </div>
             </div>
           </div>
           <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
-          {/* <div class="fb-comment-embed" data-href="https://www.facebook.com/zuck/posts/10102577175875681?comment_id=1193531464007751&amp;reply_comment_id=654912701278942" data-width="560" data-include-parent="false"></div> */}
           <div class="fb-save" data-uri="https://www.instagram.com/facebook/" data-size="large"></div>
         </div>
       </div></div>
