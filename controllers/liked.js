@@ -1,4 +1,4 @@
-const {Liked} = require("./../models/liked.js");
+const {Liked} = require("./../models");
 
 module.exports = {
 
