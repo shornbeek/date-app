@@ -1,10 +1,10 @@
-const {Liked} = require("./../models");
-
+const {Likes} = require("./../models");
+console.log(Likes);
 module.exports = {
 
     makeLike(req,res){
-        Liked.create({
-            user1: req.body.userId,
+        Likes.create({
+            userId: req.body.userId,
             liked: req.body.likeId
         }).then(result => {
             res.json(result);

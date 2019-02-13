@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Liked = sequelize.define("Liked", {
+    var Liked = sequelize.define("Likes", {
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false

@@ -1,16 +1,16 @@
 const {Matches} = require("./../models");
-const {Liked} = require("./../models");
+const {Likes} = require("./../models");
 console.log(Matches);
 //finds if there are matches for a user
 const findMatch = (currentUserId,array) => {
     let matches = [];
     for(let i = 0; i < array.length; i++){
-        if (currentUserId === array[i].userId){
+        if (currentUserId === array[i].dataValues.userId){
             for (let j = 0; j < array.length - 1;j++){
-                if((currentUserId === array[j].liked) && (array[j].userId === array[i].liked)){
+                if((currentUserId === array[j].dataValues.liked) && (array[j].dataValues.userId === array[i].dataValues.liked)){
                     let obj = {
-                        user1 : array[i].userId,
-                        user2 : array[j].userId
+                        user1 : array[i].dataValues.userId,
+                        user2 : array[j].dataValues.userId
                     }
                     matches.push(obj);
 
@@ -23,7 +23,7 @@ const findMatch = (currentUserId,array) => {
 
 module.exports = {
     makeMatch(req,res){
-        Liked.findAll().then(result => {
+        Likes.findAll().then(result => {
             let userMatches = findMatch(req.body.id, result);
             userMatches.forEach(item => {
                 Matches.create({
@@ -82,10 +82,10 @@ module.exports = {
                 user2Id: req.body.user2Id
             }
         }).then(() => {
-            Liked.destroy({
+            Likes.destroy({
                 force:true,
                 where: {
-                    $or: [{userId: req.body.user1Id, liked: req.body.user2Id}, {userId: req.body.user1Id, liked: req.body.user2Id}]
+                    $or: [{userId: req.body.user1Id, Likes: req.body.user2Id}, {userId: req.body.user1Id, Likes: req.body.user2Id}]
                 }
             }).then(() => {
                 console.log(`Removed match and parent likes for users ${req.body.user1Id} and ${req.body.user2Id}`);
