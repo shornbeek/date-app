@@ -1,11 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
+        
+        isLoggedIn: {
+            type: DataTypes.BOOLEAN,  
+            },
         name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [2],
-                is: ["^[a-z]+$",'i']
+              
             }
         },
         email: {
@@ -15,11 +19,11 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         },
-        photo: {
+        picture: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        sex: {
+        gender: {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },

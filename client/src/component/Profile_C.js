@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 // import LoveBtn_C from "./src/component/loveBtn_C";
 import Nav2_C from "./Nav2_C";
 import userAPI from "../utils/userApi.js";
+import axios from "axios";
 
 import FacebookLogin from "react-facebook-login";
 
@@ -18,7 +19,8 @@ class Profile_C extends Component {
     age: "",
     description: "",
     gender: "",
-    looking: ""
+    findMan: false,
+    findWoman: false,
   };
 
   handleInputChangeAge = event => {
@@ -31,12 +33,31 @@ class Profile_C extends Component {
     this.setState({ gender: event.target.value });
   }
   handleInputChangeLooking = event => {
-    this.setState({ looking: event.target.value })
+    console.log(event.target.value)
+    if(event.target.value === "Men"){
+      this.setState({findMan: true});
+      this.setState({findWoman: false});
+    }else if (event.target.value === "Women"){
+      this.setState({findWoman: true});
+      this.setState({findMan: false});
+    }else{
+      this.setState({findMan: true});
+      this.setState({findWoman: true});
+    }
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(userAPI.findIfUserExists(3));
+
+    // console.log(userAPI.findIfUserExists(3));
+    axios.post('/users/createOrUpdate', this.state)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    
   }
 
   responseFacebook = response => {
@@ -129,20 +150,21 @@ class Profile_C extends Component {
                       <label for="exampleFormControlSelect1">Gender</label>
                       <select onChange={this.handleInputChangeGender} className="form-control" id="Gender">
                         <option value="" selected disabled>Please select</option>
-                        <option>Man</option>
-                        <option>Woman</option>
+                        <option value="false" >Man</option>
+                        <option value="true" >Woman</option>
                       </select>
                     </div>
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">Tell us about yourself</label>
+                      <label for="exampleFormControlTextarea1">Express yourself! Say Something.</label>
                       <textarea onChange={this.handleInputChangeDescription} className="form-control" id="Description" rows="3"></textarea>
                     </div>
                     <div className="form-group">
                       <label for="exampleFormControlSelect1">Looking for</label>
                       <select onChange={this.handleInputChangeLooking} className="form-control" id="LookingFor">
                         <option value="" selected disabled>Please select</option>
-                        <option>Men</option>
-                        <option>Women</option>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Both">Both</option>
                       </select>
                     </div>
                     <button type="submit" id="submit" onClick={this.handleFormSubmit}>Submit</button>

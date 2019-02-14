@@ -23,6 +23,6 @@ router.put("/matches/update", matchesdb.updateMatch);
 
 router.delete("/matches/delete", matchesdb.destroyMatch);
 
-router.put("/users/createOrUpdate", userdb.createOrUpdate); //use this for creating and updating users info
+router.post("/users/createOrUpdate", userdb.createOrUpdate); //use this for creating and updating users info
 
 module.exports = router;

@@ -42,7 +42,7 @@ module.exports = {
                     let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
-                        if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
+                        if ((match.findMan && !result1.gender) || (match.findWoman && result1.gender)){
                             final.push(match);
                         }
                     });
@@ -53,13 +53,13 @@ module.exports = {
             } else if (result1.findMan){
                 User.findAll({
                     where: {
-                        sex: false
+                        gender: false
                     }
                 }).then(result2 => {
                     let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
-                        if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
+                        if ((match.findMan && !result1.gender) || (match.findWoman && result1.gender)){
                             final.push(match);
                         }
                     });
@@ -70,13 +70,13 @@ module.exports = {
             } else {
                 User.findAll({
                     where: {
-                        sex: true
+                        gender: true
                     }
                 }).then(result2 => {
                     let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
-                        if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
+                        if ((match.findMan && !result1.gender) || (match.findWoman && result1.gender)){
                             final.push(match);
                         }
                     });
@@ -95,8 +95,8 @@ module.exports = {
         User.create({
             name: req.body.name,
             email: req.body.email,
-            photo: req.body.photo,
-            sex: req.body.sex,
+            picture: req.body.picture,
+            gender: req.body.gender,
             age: req.body.age,
             description: req.body.description,
             findMan: req.body.findMan,
@@ -114,8 +114,8 @@ module.exports = {
         User.update({
             name: req.body.name,
             email: req.body.email,
-            photo: req.body.photo,
-            sex: req.body.sex,
+            picture: req.body.picture,
+            gender: req.body.gender,
             age: req.body.age,
             description: req.body.description,
             findMan: req.body.findMan,
@@ -142,8 +142,8 @@ module.exports = {
                 User.create({
                     name: req.body.name,
                     email: req.body.email,
-                    photo: req.body.photo,
-                    sex: req.body.sex,
+                    picture: req.body.picture,
+                    gender: req.body.gender,
                     age: req.body.age,
                     description: req.body.description,
                     findMan: req.body.findMan,
@@ -156,6 +156,10 @@ module.exports = {
                 });
             }else{
                 User.update({
+                    name: req.body.name,
+                    email: req.body.email,
+                    picture: req.body.picture,
+                    gender: req.body.gender,
                     age: req.body.age,
                     description: req.body.description,
                     findMan: req.body.findMan,
