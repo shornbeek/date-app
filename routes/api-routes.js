@@ -17,7 +17,7 @@ router.post("/liked/create", likeddb.makeLike);
 
 router.post("/matches/create", matchesdb.makeMatch);
 
-router.get("/matches/find", matchesdb.findMatch);
+router.get("/matches/find/:id", matchesdb.findMatch);
 
 router.put("/matches/update", matchesdb.updateMatch);
 
