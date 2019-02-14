@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 import Nav2_C from "./Nav2_C";
 import userAPI from "../utils/userApi.js";
 import axios from "axios";
@@ -43,7 +44,7 @@ class Profile_C extends Component {
   }
 
   handleFormSubmit = event => {
-    event.preventDefault();
+    // event.preventDefault();
 
     axios.post('/users/createOrUpdate', this.state)
     .then(function (response) {
@@ -133,7 +134,11 @@ class Profile_C extends Component {
                         <option value="Both">Both</option>
                       </select>
                     </div>
-                    <button type="submit" id="submit" onClick={this.handleFormSubmit}>Submit</button>
+                    <Link to='./Find'>
+                    <center>
+                      <button type="button" className="btn btn-info" type="submit" id="submit" onClick={this.handleFormSubmit}>Submit</button>
+                    </center>
+                    </Link>
                   </form>
                 </div>
               </div>
