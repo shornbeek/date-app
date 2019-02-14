@@ -11,13 +11,42 @@ import axios from "axios";
 class Find_C extends Component {
 
     state = {
-        users: []
+        count: 0,
+        userId: localStorage.getItem("userId"),
+        users: [],
+        likedId: "",
+        picture: ""
     }
 
 componentDidMount = () => {
     let userId = localStorage.getItem("userId")
     console.log(userId);
     axios.get(`/users/genderfind/${userId}`)
+    .then(result => {
+        console.log(result.data);
+        this.setState({users: result.data}, () => {
+            this.setState({
+                picture: this.state.users[this.state.count].picture,
+                likedId: this.state.users[this.state.count].id
+            });
+        });
+    })
+}
+
+clickHeart = (currentUserId, likedUserId) => {
+    console.log(likedUserId);
+    axios.post("/liked/create", {
+        userId: currentUserId,
+        liked: likedUserId
+    }).then(result => {
+        console.log(`Created like between user ${currentUserId} and ${likedUserId}`);
+        console.log(result);
+        this.setState({count: (this.setState.count+1)})
+    });
+}
+
+clickDown = () => {
+    this.setState({count: (this.setState.count+1)})
 }
 
     render() {
@@ -25,7 +54,7 @@ componentDidMount = () => {
             <div className="App">
                 <div className="container">
                 <Nav_C/>
-                    <img src="http://reductress.com/wp-content/uploads/2016/10/woman-coffee-820x500.jpg" alt="Smiley face" width="100%" />
+                    <img src={this.state.picture} alt="Smiley face" width="100%" />
                     <div className="card mb-4">
                         <div className="card-header">
                         </div>
@@ -48,12 +77,12 @@ componentDidMount = () => {
                             <div className="row">
                                 <div className="col-6">
                                     {/* <button>No</button> */}
-                                    <div id='thumbs-down' >
-                                        <i onclick="myFunction(this)" className="fa fa-thumbs-down"></i>
+                                    <div onClick={this.clickDown} id='thumbs-down' >
+                                        <i onlick="myFunction(this)" className="fa fa-thumbs-down"></i>
                                         <DislikeBtn_C />
                                     </div>
                                 </div>
-                                <div className="col-6">
+                                <div onClick={()=> this.clickHeart(this.state.userId, this.state.likedId)} className="col-6">
                                     {/* <button>Yes</button> */}
                                     <div id='heart'>
                                     <LoveBtn_C />
