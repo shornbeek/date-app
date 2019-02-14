@@ -138,7 +138,6 @@ module.exports = {
                 email: req.body.email
             }
         }).then(result => {
-            console.log(result);
             if (result === null){
                 User.create({
                     name: req.body.name,
@@ -151,7 +150,6 @@ module.exports = {
                     findWoman: req.body.findWoman
                 }).then(result => {
                     console.log("Created user");
-                    console.log(result);
                     res.end();
                 }).catch(err => {
                     if (err) throw err;
@@ -164,11 +162,10 @@ module.exports = {
                     findWoman: req.body.findWoman
                 },{
                     where: {
-                        id: req.body.id
+                        email: req.body.email
                     }
                 }).then(result => {
                     console.log("Updated user");
-                    console.log(result);
                     res.end();
                 }).catch(err => {
                     if (err) throw err;
