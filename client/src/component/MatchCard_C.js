@@ -10,154 +10,81 @@ class MatchCard_C extends Component {
 
     state = {
         userId: localStorage.getItem("userId"),
-        matches: []
+        matches: [],
+        count: 0,
+        matchInfo: []
     }
 
     componentDidMount = () => {
-        console.log(this.state.userId);
         axios.post("/matches/create", {
             id: this.state.userId
-        }).then(() => {
-            axios.get("/matches/find", {
-                userId: this.state.userId
+        }).then(result => {
+            axios.get(`/matches/find/${this.state.userId}`, {
             }).then(result => {
                 this.setState({matches: result.data});
-                console.log(result.data);
+                for(let i =0; i < this.state.matches.length; i++){
+                    console.log(this.state.matches);
+                    console.log(`/users/${this.state.matches[i].user2Id}`);
+                    axios.get(`/users/${this.state.matches[i].user2Id}`)
+                    .then(result => {
+                        let matchInfo = [...this.state.matchInfo, result.data[0]]
+                        this.setState({matchInfo});
+                    });
+                }
             });
         });
+    }
+
+    showMatches = () => {
+        return (
+        <div>
+            {this.state.matchInfo.map(result => (
+                <div className="row">
+                    <div className="card mb-12">
+                        <div className="card-header">
+                            <div className="row">
+                                <div className="col-4">
+                                    <img src={result.picture} alt="Smiley face" width="100%" />
+
+                                </div>
+                                    <div className="col-8">
+                                        <div className="content">
+                                            <ul>
+                                                <li>
+                                                    <strong>{result.name}</strong>
+                                                </li>
+                                                <li>
+                                                    <strong>{result.description}</strong>
+                                                </li>
+                                                <li>
+                                                    <strong>Age: {result.age}</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <button onClick={this.getMatchInfo}>Video Call</button>
+                    </div>
+                </div>
+                
+            ))}
+        </div>
+        )
     }
 
     render() {
         return (
 
             <div className="App">
+                <center>
+
                 <div className="container">
                 <Nav3_C/>
-                    <div className="row">
-                    {/* <Nav2_C/> */}
-                   
-
-                        <div className="card mb-4">
-                            <div className="card-header">
-                                <div className="row">
-                                    <div className="col-4">
-                                        <img src="https://www.wxxv25.com/wp-content/uploads/2019/02/img_1182_copy_2_7b3ebba530b1f643cd6fad6490bb63d9-10-1.jpg" alt="Smiley face" width="100%" />
-
-                                    </div>
-                                    <div className="col-8">
-                                        <div className="content">
-                                            <ul>
-                                                <li>
-                                                    <strong>Name:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Occupation:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Location:</strong>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button>Video Call</button>
-                        </div>
-                    </div>
-
-                                    <div className="container">
-                    <div className="row">
-                        <div className="card mb-4">
-                            <div className="card-header">
-                                <div className="row">
-                                    <div className="col-4">
-                                        <img src="https://www.wxxv25.com/wp-content/uploads/2019/02/img_1182_copy_2_7b3ebba530b1f643cd6fad6490bb63d9-10-1.jpg" alt="Smiley face" width="100%" />
-
-                                    </div>
-                                    <div className="col-8">
-                                        <div className="content">
-                                            <ul>
-                                                <li>
-                                                    <strong>Name:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Occupation:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Location:</strong>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button>Video Call</button>
-                        </div>
-                    </div>
-
-                                    <div className="container">
-                    <div className="row">
-                        <div className="card mb-4">
-                            <div className="card-header">
-                                <div className="row">
-                                    <div className="col-4">
-                                        <img src="https://www.wxxv25.com/wp-content/uploads/2019/02/img_1182_copy_2_7b3ebba530b1f643cd6fad6490bb63d9-10-1.jpg" alt="Smiley face" width="100%" />
-
-                                    </div>
-                                    <div className="col-8">
-                                        <div className="content">
-                                            <ul>
-                                                <li>
-                                                    <strong>Name:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Occupation:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Location:</strong>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button>Video Call</button>
-                        </div>
-                    </div>
-
-                                    <div className="container">
-                    <div className="row">
-                        <div className="card mb-4">
-                            <div className="card-header">
-                                <div className="row">
-                                    <div className="col-4">
-                                        <img src="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2012/01/shutterstock_59343583.jpg" alt="Smiley face" width="100%" />
-
-                                    </div>
-                                    <div className="col-8">
-                                        <div className="content">
-                                            <ul>
-                                                <li>
-                                                    <strong>Name:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Occupation:</strong>
-                                                </li>
-                                                <li>
-                                                    <strong>Location:</strong>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button>Video Call</button>
-                        </div>
-                    </div>
+                    {this.showMatches()}
                 </div>
-            </div>
-                    </div>
-                </div>
+                </center>
+
             </div>
         );
     }
