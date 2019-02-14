@@ -130,6 +130,54 @@ module.exports = {
         }).catch(err => {
             if (err) throw err;
         });
+    },
+
+    createOrUpdate(req,res){
+        User.findOne({
+            where: {
+                email: req.body.email
+            }
+        }).then(result => {
+            console.log(result);
+            if (result === null){
+                User.create({
+                    name: req.body.name,
+                    email: req.body.email,
+                    photo: req.body.photo,
+                    sex: req.body.sex,
+                    age: req.body.age,
+                    description: req.body.description,
+                    findMan: req.body.findMan,
+                    findWoman: req.body.findWoman
+                }).then(result => {
+                    console.log("Created user");
+                    console.log(result);
+                    res.end();
+                }).catch(err => {
+                    if (err) throw err;
+                });
+            }else{
+                User.update({
+                    age: req.body.age,
+                    description: req.body.description,
+                    findMan: req.body.findMan,
+                    findWoman: req.body.findWoman
+                },{
+                    where: {
+                        id: req.body.id
+                    }
+                }).then(result => {
+                    console.log("Updated user");
+                    console.log(result);
+                    res.end();
+                }).catch(err => {
+                    if (err) throw err;
+                });
+            }
+            res.end();
+        }).catch(err => {
+            if(err) throw err;
+        });
     }
 
 

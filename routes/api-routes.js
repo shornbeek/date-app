@@ -23,4 +23,6 @@ router.put("/matches/update", matchesdb.updateMatch);
 
 router.delete("/matches/delete", matchesdb.destroyMatch);
 
+router.put("/matches/createOrUpdate", userdb.createOrUpdate);
+
 module.exports = router;
