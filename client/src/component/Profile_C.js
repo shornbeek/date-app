@@ -103,7 +103,7 @@ class Profile_C extends Component {
           <div className="container">
             <div className="card mb-4">
               <div className="card-header">
-                <center><h4>Please tell us a little more about yourself</h4></center>
+                <center><h4>One more step to your next match...</h4></center>
               </div>
               <div className="card-body">
                 <div className="content">
@@ -121,7 +121,7 @@ class Profile_C extends Component {
                       </select>
                     </div>
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">Express yourself! Say Something.</label>
+                      <label for="exampleFormControlTextarea1">Tell them something about yourself...</label>
                       <textarea onChange={this.handleInputChangeDescription} className="form-control" id="Description" rows="3"></textarea>
                     </div>
                     <div className="form-group">
