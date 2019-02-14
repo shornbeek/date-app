@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
-
+import "../style/FaceBookBtn_C.css";
 
 export default class FaceBookBtn_C extends Component {
   state = {
