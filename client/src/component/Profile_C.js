@@ -1,12 +1,8 @@
-
 import React, { Component } from 'react';
-// import Nav from "./component/Nav";
-// import FaceBookBtn_C from "./FaceBookBtn_C";
-// import LoveBtn_C from "./src/component/loveBtn_C";
 import Nav2_C from "./Nav2_C";
 import userAPI from "../utils/userApi.js";
 import axios from "axios";
-
+import "../style/FaceBookBtn_C.css";
 import FacebookLogin from "react-facebook-login";
 
 class Profile_C extends Component {
@@ -49,7 +45,6 @@ class Profile_C extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    // console.log(userAPI.findIfUserExists(3));
     axios.post('/users/createOrUpdate', this.state)
     .then(function (response) {
       let userId = response.data.id;
@@ -81,27 +76,11 @@ class Profile_C extends Component {
 
     if (this.state.isLoggedIn) {
       fbContent = (
-        // <Profile_C>
-        <div
-          style={{
-            width: "400px",
-            margin: "auto",
-            // background: "#f4f4f4",
-            padding: "20px",
-            // visibility: "hidden"
-          }}
-        >
+        <div id="FBLogIn">
           <img
-            style={{
-              width: "200px",
-              margin: "auto",
-              padding: "5px",
-              // visibility: "hidden"
-            }} src={this.state.picture} alt={this.state.name} />
+            id="FBpicture" src={this.state.picture} alt={this.state.name} />
           <h2> {this.state.name}</h2>
-          {/* Email: {this.state.email} */}
         </div>
-        // </Profile_C>
       );
     } else {
       fbContent = (
@@ -114,32 +93,17 @@ class Profile_C extends Component {
         />
       );
     }
-
     return <div>
-    
     <Nav2_C/>
-        {/* <h4>Search! Match! Video Chat!</h4> */}
-        {/* <center> <img src="https://i.ibb.co/qRmFNZB/homepagedate.png" alt="Screen-Shot-2019-02-09-at-1-19-10-PM" border="0" width="50%" /></center> */}
-       
   <center> {fbContent} </center>
 
       {this.state.isLoggedIn ?
       
         <div className="App">
           <div className="container">
-            {/* <FaceBookBtn_C/> */}
-
-
-
-
-            {/* <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Smiley face" width="100%" /> */}
-
             <div className="card mb-4">
-
               <div className="card-header">
-                {/* <center> <button>Find Love</button></center> */}
                 <center><h4>Please tell us a little more about yourself</h4></center>
-
               </div>
               <div className="card-body">
                 <div className="content">
@@ -174,11 +138,6 @@ class Profile_C extends Component {
                 </div>
               </div>
             </div>
-            {/* <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
-      
-                  <div class="fb-comment-embed" data-href="https://www.facebook.com/zuck/posts/10102577175875681?comment_id=1193531464007751&amp;reply_comment_id=654912701278942" data-width="560" data-include-parent="false"></div>
-                  <div class="fb-save" data-uri="https://www.instagram.com/facebook/" data-size="large"></div> */}
-
           </div>
         </div>
         : null}

@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Header from "./component/Header";
 import Profile_C from "./component/Profile_C";
-// import Nav from "./component/Nav";
 import MatchCard_C from "./component/MatchCard_C";
-// import FaceBookBtn_C from "./component/FaceBookBtn_C";
 import Find_C from "./component/Find_C";
-import Home_C from "./component/Home_C";
 import Video_C from "./component/Video_C";
-import Nav_C from "./component/Nav_C";
 
 
 
