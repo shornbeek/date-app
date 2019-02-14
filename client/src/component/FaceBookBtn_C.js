@@ -41,7 +41,7 @@ import FacebookLogin from "react-facebook-login";
 
 export default class FaceBookBtn_C extends Component {
   state = {
-    isLoggedIn: false,
+    isLoggedIn: "",
     userID: "",
     name: "",
     email: "",

@@ -52,7 +52,9 @@ class Profile_C extends Component {
     // console.log(userAPI.findIfUserExists(3));
     axios.post('/users/createOrUpdate', this.state)
     .then(function (response) {
-      console.log(response);
+      let userId = response.data.id;
+      console.log(userId);
+      localStorage.setItem("userId", userId);
     })
     .catch(function (error) {
       console.log(error);

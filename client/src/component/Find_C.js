@@ -4,10 +4,22 @@ import "../style/Find_C.css";
 import Profile_C from './Profile_C';
 import LoveBtn_C from './loveBtn_C';
 import DislikeBtn_C from './DislikeBtn_C';
+import axios from "axios";
 
 
 
 class Find_C extends Component {
+
+    state = {
+        users: []
+    }
+
+componentDidMount = () => {
+    let userId = localStorage.getItem("userId")
+    console.log(userId);
+    axios.get(`/users/genderfind/${userId}`)
+}
+
     render() {
         return (
             <div className="App">

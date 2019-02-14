@@ -125,7 +125,7 @@ module.exports = {
                 id: req.params.id
             }
         }).then(result => {
-            console.log(result);
+            res.json(result);
             res.end();
         }).catch(err => {
             if (err) throw err;
@@ -148,9 +148,9 @@ module.exports = {
                     description: req.body.description,
                     findMan: req.body.findMan,
                     findWoman: req.body.findWoman
-                }).then(result => {
-                    console.log("Created user");
-                    res.end();
+                }).then(result2 => {
+                    console.log("Created user with id "+ result2.id);
+                    res.json(result2);
                 }).catch(err => {
                     if (err) throw err;
                 });
@@ -168,14 +168,21 @@ module.exports = {
                     where: {
                         email: req.body.email
                     }
-                }).then(result => {
-                    console.log("Updated user");
-                    res.end();
+                }).then(result2 => {
+                    User.findOne({
+                        where: {
+                            email: req.body.email
+                        }
+                    }).then(result3 => {
+                        console.log("Created user with id "+ result3.id);
+                        res.json(result3);
+                    }).catch(err => {
+                        if (err) throw err;
+                    });
                 }).catch(err => {
                     if (err) throw err;
                 });
             }
-            res.end();
         }).catch(err => {
             if(err) throw err;
         });
