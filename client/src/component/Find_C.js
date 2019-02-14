@@ -14,6 +14,7 @@ class Find_C extends Component {
         count: 0,
         userId: localStorage.getItem("userId"),
         users: [],
+        likedName:"",
         likedId: "",
         picture: ""
     }
@@ -27,7 +28,8 @@ componentDidMount = () => {
         this.setState({users: result.data}, () => {
             this.setState({
                 picture: this.state.users[this.state.count].picture,
-                likedId: this.state.users[this.state.count].id
+                likedId: this.state.users[this.state.count].id,
+                likedName: this.state.users[this.state.count].name
             });
         });
     })
@@ -41,12 +43,23 @@ clickHeart = (currentUserId, likedUserId) => {
     }).then(result => {
         console.log(`Created like between user ${currentUserId} and ${likedUserId}`);
         console.log(result);
-        this.setState({count: (this.setState.count+1)})
+        this.setState({count: (this.state.count+1)})
+        this.setState({
+            picture: this.state.users[this.state.count].picture,
+            likedId: this.state.users[this.state.count].id,
+            likedName: this.state.users[this.state.count].name
+        })
     });
 }
 
 clickDown = () => {
-    this.setState({count: (this.setState.count+1)})
+    console.log(this.state.count);
+    this.setState({count: (this.state.count+1)});
+    this.setState({
+        picture: this.state.users[this.state.count].picture,
+        likedId: this.state.users[this.state.count].id,
+        likedName: this.state.users[this.state.count].name
+    });
 }
 
     render() {
@@ -54,6 +67,7 @@ clickDown = () => {
             <div className="App">
                 <div className="container">
                 <Nav_C/>
+                    <h2>{this.state.likedName}</h2>
                     <img src={this.state.picture} alt="Smiley face" width="100%" />
                     <div className="card mb-4">
                         <div className="card-header">
