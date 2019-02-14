@@ -2,10 +2,31 @@
 import React, { Component } from 'react';
 // import Nav2_C from "./Nav2_C";
 import Nav3_C from "./Nav3_C";
+import axios from "axios";
 
 
 
 class MatchCard_C extends Component {
+
+    state = {
+        userId: localStorage.getItem("userId"),
+        matches: []
+    }
+
+    componentDidMount = () => {
+        console.log(this.state.userId);
+        axios.post("/matches/create", {
+            id: this.state.userId
+        }).then(() => {
+            axios.get("/matches/find", {
+                userId: this.state.userId
+            }).then(result => {
+                this.setState({matches: result.data});
+                console.log(result.data);
+            });
+        });
+    }
+
     render() {
         return (
 

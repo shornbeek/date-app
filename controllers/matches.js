@@ -24,7 +24,9 @@ const findMatch = (currentUserId,array) => {
 module.exports = {
     makeMatch(req,res){
         Likes.findAll().then(result => {
-            let userMatches = findMatch(req.body.id, result);
+            console.log("req.body ",req.body);
+            let userMatches = findMatch(parseInt(req.body.id), result);
+            console.log("matches",userMatches);
             userMatches.forEach(item => {
                 Matches.create({
                     user1Id: item.user1,
