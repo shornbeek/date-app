@@ -9,7 +9,7 @@ router.get("/users/if/:id", userdb.ifExists);
 
 router.get("/users/genderfind/:id", userdb.findByGender);
 
-router.post("/users/create", userdb.createUser);
+router.post("/users/create", userdb.createUser); //don't use
 
 router.put("/users/:id", userdb.updateUser);
 
@@ -23,6 +23,6 @@ router.put("/matches/update", matchesdb.updateMatch);
 
 router.delete("/matches/delete", matchesdb.destroyMatch);
 
-router.put("/matches/createOrUpdate", userdb.createOrUpdate);
+router.put("/users/createOrUpdate", userdb.createOrUpdate);
 
 module.exports = router;
