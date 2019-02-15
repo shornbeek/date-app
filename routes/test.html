@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@0.3.20/dist/peer.min.js"></script>
+</head>
+
+<body>
+    <video id="remote"></video>
+    <video id="local"></video>
+    <script>
+        var peer = new Peer({ key: 'lwjd5qra8257b9' });
+        peer.on('open', function (id) {
+            console.log('My peer ID is: ' + id);
+        });
+        peer.on('call', function (call) {
+            // Answer the call, providing our mediaStream
+            call.answer(mediaStream);
+        });
+        call.on('stream', function (stream) {
+            // `stream` is the MediaStream of the remote peer.
+            // Here you'd add it to an HTML video/canvas element.
+            var x = document.getElementById("remote").setAttribute("src", stream);
+        });
+    </script>
+</body>
+
+</html>
