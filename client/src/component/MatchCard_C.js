@@ -39,17 +39,16 @@ class MatchCard_C extends Component {
         return (
         <div>
             {this.state.matchInfo.map(result => (
-                <div className="row">
                     <div className="card mb-12">
                         <div className="card-header">
-                            <div className="row">
+                           
                                 <div className="col-4">
-                                    <img src={result.picture} alt="Smiley face" width="100%" />
+                                    <img src={result.picture} alt="Smiley face" width="100%"/>
 
                                 </div>
                                     <div className="col-8">
                                         <div className="content">
-                                            <ul>
+                                       <left>     <ul>
                                                 <li>
                                                     <strong>{result.name}</strong>
                                                 </li>
@@ -58,15 +57,17 @@ class MatchCard_C extends Component {
                                                 </li>
                                                 <li>
                                                     <strong>Age: {result.age}</strong>
+                                                   
                                                 </li>
-                                            </ul>
+                                            </ul> 
+                                     </left>
                                         </div>
                                     </div>
-                            </div>
+                            
                         </div>
                         <button onClick={this.getMatchInfo}>Video Call</button>
                     </div>
-                </div>
+               
                 
             ))}
         </div>

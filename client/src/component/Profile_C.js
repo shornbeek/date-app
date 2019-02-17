@@ -104,7 +104,7 @@ class Profile_C extends Component {
           <div className="container">
             <div className="card mb-4">
               <div className="card-header">
-                <center><h4>One more step to your next match...</h4></center>
+                <center><h4>One more step before you can start matching...</h4></center>
               </div>
               <div className="card-body">
                 <div className="content">
