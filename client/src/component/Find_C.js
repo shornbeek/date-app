@@ -65,7 +65,6 @@ clickDown = () => {
                 <div className="container">
                 <Nav_C/>
                     <h2>{this.state.likedName}</h2>
-                    <h2>{this.state.likedName}</h2>
                     <img src={this.state.picture} alt="Smiley face" width="100%" />
                     <div className="card mb-4">
                         <div className="card-header">
