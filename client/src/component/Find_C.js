@@ -13,7 +13,8 @@ class Find_C extends Component {
         users: [],
         likedName:"",
         likedId: "",
-        picture: ""
+        picture: "",
+        description: ""
     }
 
 componentDidMount = () => {
@@ -26,7 +27,9 @@ componentDidMount = () => {
             this.setState({
                 picture: this.state.users[this.state.count].picture,
                 likedId: this.state.users[this.state.count].id,
-                likedName: this.state.users[this.state.count].name
+                likedName: this.state.users[this.state.count].name,
+                description: this.state.users[this.state.count].description
+
             });
         });
     })
@@ -44,7 +47,9 @@ clickHeart = (currentUserId, likedUserId) => {
         this.setState({
             picture: this.state.users[this.state.count].picture,
             likedId: this.state.users[this.state.count].id,
-            likedName: this.state.users[this.state.count].name
+            likedName: this.state.users[this.state.count].name,
+            description: this.state.users[this.state.count].description
+
         })
     });
 }
@@ -55,7 +60,9 @@ clickDown = () => {
     this.setState({
         picture: this.state.users[this.state.count].picture,
         likedId: this.state.users[this.state.count].id,
-        likedName: this.state.users[this.state.count].name
+        likedName: this.state.users[this.state.count].name,
+        description: this.state.users[this.state.count].description
+
     });
 }
 
@@ -66,6 +73,8 @@ clickDown = () => {
                 <Nav_C/>
                     <h2>{this.state.likedName}</h2>
                     <img src={this.state.picture} alt="Smiley face" width="100%" />
+                    <h3>{this.state.description}</h3>
+
                     <div className="card mb-4">
                         <div className="card-header">
                         </div>
