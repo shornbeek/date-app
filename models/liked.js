@@ -9,7 +9,13 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false 
         }
     },{
-        timestamps: false
+        timestamps: false,
+        indexes: [
+            {
+                unique: true,
+                fields: ['userId', 'liked']
+            }
+        ]
     });
     return Liked;
 }

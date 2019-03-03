@@ -5,7 +5,11 @@ const PORT = process.env.PORT || 3001;
 let db = require('./models');
 const sequelize = require("sequelize");
 const server = require("http").createServer(app);
+<<<<<<< HEAD
 var path = require('path');
+=======
+const path = require("path");
+>>>>>>> 1590c3ae9c499301aedb945be413182dd53ce0a7
 
 
 
@@ -21,8 +25,8 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
   });
 
-db.sequelize.sync().then(function() {
-    server.listen(PORT, function() {
+db.sequelize.sync({ force: true }).then(function() {
+    app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
-  });
+   });

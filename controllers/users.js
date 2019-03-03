@@ -42,7 +42,7 @@ module.exports = {
                     let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
-                        if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
+                        if ((match.findMan && !result1.gender) || (match.findWoman && result1.gender)){
                             final.push(match);
                         }
                     });
@@ -53,13 +53,13 @@ module.exports = {
             } else if (result1.findMan){
                 User.findAll({
                     where: {
-                        sex: false
+                        gender: false
                     }
                 }).then(result2 => {
                     let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
-                        if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
+                        if ((match.findMan && !result1.gender) || (match.findWoman && result1.gender)){
                             final.push(match);
                         }
                     });
@@ -70,13 +70,13 @@ module.exports = {
             } else {
                 User.findAll({
                     where: {
-                        sex: true
+                        gender: true
                     }
                 }).then(result2 => {
                     let noSelf = result2.filter(user => user.id !== result1.id);
                     let final = [];
                     noSelf.forEach(match => {
-                        if ((match.findMan && !result1.sex) || (match.findWoman && result1.sex)){
+                        if ((match.findMan && !result1.gender) || (match.findWoman && result1.gender)){
                             final.push(match);
                         }
                     });
@@ -95,8 +95,8 @@ module.exports = {
         User.create({
             name: req.body.name,
             email: req.body.email,
-            photo: req.body.photo,
-            sex: req.body.sex,
+            picture: req.body.picture,
+            gender: req.body.gender,
             age: req.body.age,
             description: req.body.description,
             findMan: req.body.findMan,
@@ -114,8 +114,8 @@ module.exports = {
         User.update({
             name: req.body.name,
             email: req.body.email,
-            photo: req.body.photo,
-            sex: req.body.sex,
+            picture: req.body.picture,
+            gender: req.body.gender,
             age: req.body.age,
             description: req.body.description,
             findMan: req.body.findMan,
@@ -125,10 +125,66 @@ module.exports = {
                 id: req.params.id
             }
         }).then(result => {
-            console.log(result);
+            res.json(result);
             res.end();
         }).catch(err => {
             if (err) throw err;
+        });
+    },
+
+    createOrUpdate(req,res){
+        User.findOne({
+            where: {
+                email: req.body.email
+            }
+        }).then(result => {
+            if (result === null){
+                User.create({
+                    name: req.body.name,
+                    email: req.body.email,
+                    picture: req.body.picture,
+                    gender: req.body.gender,
+                    age: req.body.age,
+                    description: req.body.description,
+                    findMan: req.body.findMan,
+                    findWoman: req.body.findWoman
+                }).then(result2 => {
+                    console.log("Created user with id "+ result2.id);
+                    res.json(result2);
+                }).catch(err => {
+                    if (err) throw err;
+                });
+            }else{
+                User.update({
+                    name: req.body.name,
+                    email: req.body.email,
+                    picture: req.body.picture,
+                    gender: req.body.gender,
+                    age: req.body.age,
+                    description: req.body.description,
+                    findMan: req.body.findMan,
+                    findWoman: req.body.findWoman
+                },{
+                    where: {
+                        email: req.body.email
+                    }
+                }).then(result2 => {
+                    User.findOne({
+                        where: {
+                            email: req.body.email
+                        }
+                    }).then(result3 => {
+                        console.log("Created user with id "+ result3.id);
+                        res.json(result3);
+                    }).catch(err => {
+                        if (err) throw err;
+                    });
+                }).catch(err => {
+                    if (err) throw err;
+                });
+            }
+        }).catch(err => {
+            if(err) throw err;
         });
     }
 

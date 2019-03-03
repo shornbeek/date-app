@@ -6,7 +6,7 @@ const findMatch = (currentUserId,array) => {
     let matches = [];
     for(let i = 0; i < array.length; i++){
         if (currentUserId === array[i].dataValues.userId){
-            for (let j = 0; j < array.length - 1;j++){
+            for (let j = 0; j < array.length; j++){
                 if((currentUserId === array[j].dataValues.liked) && (array[j].dataValues.userId === array[i].dataValues.liked)){
                     let obj = {
                         user1 : array[i].dataValues.userId,
@@ -24,13 +24,26 @@ const findMatch = (currentUserId,array) => {
 module.exports = {
     makeMatch(req,res){
         Likes.findAll().then(result => {
-            let userMatches = findMatch(req.body.id, result);
+            console.log("req.body ",req.body);
+            let userMatches = findMatch(parseInt(req.body.id), result);
+            console.log("matches",userMatches);
             userMatches.forEach(item => {
-                Matches.create({
-                    user1Id: item.user1,
-                    user2Id: item.user2
-                }).then(() => {
-                    console.log(`Created match between user ${item.user1} and ${item.user2}`);
+                Matches.findOrCreate({
+                    where: {
+                        user1Id: item.user1,
+                        user2Id: item.user2
+                    },
+                    defaults: {
+                        user1Id: item.user1,
+                        user2Id: item.user2
+                    }
+                }).then((result) => {
+                    let created = result[1];
+                    if (created){
+                        console.log(`Created match between user ${item.user1} and ${item.user2}`);
+                    } else {
+                        console.log(`Match between user ${item.user1} and ${item.user2} already exists`);
+                    }
                     res.end();
                 }).catch(err => {
                     if(err) throw err;
@@ -44,9 +57,10 @@ module.exports = {
     },
 
     findMatch(req,res){
+        console.log("userId",req.body);
         Matches.findAll({
             where: {
-                $or: [{user1Id:req.body.userId}, {user2Id:req.body.userId}]
+                $or: [{user1Id:req.params.id}, {user2Id:req.params.id}]
             }
         }).then(result => {
             res.json(result);

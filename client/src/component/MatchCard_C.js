@@ -5,8 +5,7 @@ import Nav3_C from "./Nav3_C";
 import axios from "axios";
 
 const divStyle = {
-    margin: '40px',
-    border: '5px solid pink',
+
     listStylType: 'none'
   };
 

@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS dateapp_db;
 CREATE DATABASE dateapp_db;
 USE dateapp_db;
 
+
 CREATE TABLE users (
 	id INTEGER AUTO_INCREMENT NOT NULL,
     name VARCHAR(75) NOT NULL,
@@ -11,7 +12,7 @@ CREATE TABLE users (
     sex BOOLEAN NOT NULL, -- male=false female=true
     description TEXT,
     interests VARCHAR(255),
-    findMan BOOLEAN DEFAULT false
+    findMan BOOLEAN DEFAULT false,
     findWoman BOOLEAN DEFAULT false,
     active BOOLEAN NOT NULL DEFAULT false,
     PRIMARY KEY(id)
@@ -19,7 +20,7 @@ CREATE TABLE users (
 
 CREATE TABLE liked (
 	userId INTEGER NOT NULL,
-    liked INTEGER NOT NULL, --This is the id of a user they liked
+    liked INTEGER NOT NULL, -- This is the id of a user they liked
     PRIMARY KEY(userId)
 );
 

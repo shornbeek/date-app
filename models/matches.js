@@ -24,7 +24,13 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN
         }
     },{
-        timestamps: false
+        timestamps: false,
+        indexes: [
+            {
+                unique: true,
+                fields: ['user1Id', 'user2Id']
+            }
+        ]
     });
     return Matches;
 }
