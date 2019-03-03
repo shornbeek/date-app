@@ -38,16 +38,7 @@ class MatchCard_C extends Component {
                             let matchInfo = [...this.state.matchInfo, result.data[0]]
                             this.setState({matchInfo});
                         });
-                    } else {
-                        console.log("did not match logged in id");
-                        console.log(`/users/${this.state.matches[i].user1Id}`);
-                        axios.get(`/users/${this.state.matches[i].user1Id}`)
-                        .then(result => {
-                            let matchInfo = [...this.state.matchInfo, result.data[0]]
-                            this.setState({matchInfo});
-                        });
                     }
-
                 }
             });
         });
