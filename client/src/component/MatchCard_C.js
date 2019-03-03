@@ -4,6 +4,11 @@ import React, { Component } from 'react';
 import Nav3_C from "./Nav3_C";
 import axios from "axios";
 
+const divStyle = {
+
+    listStylType: 'none'
+  };
+
 
 
 class MatchCard_C extends Component {
@@ -24,18 +29,21 @@ class MatchCard_C extends Component {
                 this.setState({matches: result.data});
                 for(let i =0; i < this.state.matches.length; i++){
                     console.log(this.state.matches);
+<<<<<<< HEAD
                     console.log(this.state.userId);
                     if(this.state.userId === this.state.matches[i].user1Id){
                         console.log("matched logged in id");
                         console.log(`/users/${this.state.matches[i].user2Id}`);
+=======
+                    console.log(`/users/${this.state.matches[i].user2Id}`);
+                    if(this.state.userId !== this.state.matches[i].user2Id){
+>>>>>>> e2ffa2c87ec1407fecf22a28b0ce67752985c245
                         axios.get(`/users/${this.state.matches[i].user2Id}`)
                         .then(result => {
                             let matchInfo = [...this.state.matchInfo, result.data[0]]
                             this.setState({matchInfo});
                         });
                     } else {
-                        console.log("did not match logged in id");
-                        console.log(`/users/${this.state.matches[i].user1Id}`);
                         axios.get(`/users/${this.state.matches[i].user1Id}`)
                         .then(result => {
                             let matchInfo = [...this.state.matchInfo, result.data[0]]
@@ -54,14 +62,14 @@ class MatchCard_C extends Component {
             {this.state.matchInfo.map(result => (
                     <div className="card mb-12">
                         <div className="card-header">
-                           
+                        <div className="row">
                                 <div className="col-4">
                                     <img src={result.picture} alt="Smiley face" width="100%"/>
 
                                 </div>
                                     <div className="col-8">
                                         <div className="content">
-                                       <left>     <ul>
+                                       <left>     <ul style={divStyle}>
                                                 <li>
                                                     <strong>{result.name}</strong>
                                                 </li>
@@ -76,7 +84,7 @@ class MatchCard_C extends Component {
                                      </left>
                                         </div>
                                     </div>
-                            
+                            </div>
                         </div>
                         <button onClick={this.getMatchInfo}>Video Call</button>
                     </div>

@@ -5,7 +5,11 @@ const PORT = process.env.PORT || 3001;
 let db = require('./models');
 const sequelize = require("sequelize");
 const server = require("http").createServer(app);
+<<<<<<< HEAD
+var path = require('path');
+=======
 const path = require("path");
+>>>>>>> 1590c3ae9c499301aedb945be413182dd53ce0a7
 
 
 
