@@ -29,15 +29,10 @@ class MatchCard_C extends Component {
                 this.setState({matches: result.data});
                 for(let i =0; i < this.state.matches.length; i++){
                     console.log(this.state.matches);
-<<<<<<< HEAD
                     console.log(this.state.userId);
                     if(this.state.userId === this.state.matches[i].user1Id){
                         console.log("matched logged in id");
                         console.log(`/users/${this.state.matches[i].user2Id}`);
-=======
-                    console.log(`/users/${this.state.matches[i].user2Id}`);
-                    if(this.state.userId !== this.state.matches[i].user2Id){
->>>>>>> e2ffa2c87ec1407fecf22a28b0ce67752985c245
                         axios.get(`/users/${this.state.matches[i].user2Id}`)
                         .then(result => {
                             let matchInfo = [...this.state.matchInfo, result.data[0]]
