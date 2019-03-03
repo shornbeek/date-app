@@ -25,11 +25,20 @@ class MatchCard_C extends Component {
                 for(let i =0; i < this.state.matches.length; i++){
                     console.log(this.state.matches);
                     console.log(`/users/${this.state.matches[i].user2Id}`);
-                    axios.get(`/users/${this.state.matches[i].user2Id}`)
-                    .then(result => {
-                        let matchInfo = [...this.state.matchInfo, result.data[0]]
-                        this.setState({matchInfo});
-                    });
+                    if(this.state.userId !== this.state.matches[i].user2Id){
+                        axios.get(`/users/${this.state.matches[i].user2Id}`)
+                        .then(result => {
+                            let matchInfo = [...this.state.matchInfo, result.data[0]]
+                            this.setState({matchInfo});
+                        });
+                    } else {
+                        axios.get(`/users/${this.state.matches[i].user1Id}`)
+                        .then(result => {
+                            let matchInfo = [...this.state.matchInfo, result.data[0]]
+                            this.setState({matchInfo});
+                        });
+                    }
+
                 }
             });
         });
